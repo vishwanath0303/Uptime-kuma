@@ -2,7 +2,6 @@ pipeline{
     agent any
     tools {
         jdk 'jdk17'
-        nodejs 'node18'
     }
     environment {
         SCANNER_HOME=tool 'sonar-scanner'
@@ -11,11 +10,6 @@ pipeline{
         stage ("Git Pull"){
             steps{
                 git branch: 'main', url: 'https://github.com/vishwanath0303/Uptime-kuma.git'
-            }
-        }
-        stage('Install Dependencies') {
-            steps {
-                sh "npm install"
             }
         }
         stage("Sonarqube Analysis "){
